@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'">
+  <meta name="referrer" content="no-referrer">
+  <meta name="color-scheme" content="light dark">
+  <meta name="description" content="Learn guitar from zero: tuning, first chords, chord changes and strumming, with interactive chord diagrams and a metronome.">
+  <title>Guitar Lab: learn guitar from zero</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/theme.js"></script>
+  <script type="module" src="js/app.js"></script>
+</head>
+<body>
+  <a class="skip" href="#lessons">Skip to lessons</a>
+
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="Guitar Lab home">
+      <img src="favicon.svg" alt="" width="28" height="28"> Guitar Lab
+    </a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#lessons">Lessons</a>
+      <a href="#chords">Chords</a>
+      <a href="#metronome">Metronome</a>
+    </nav>
+    <button id="theme-toggle" class="icon-btn" type="button" aria-label="Switch colour theme">
+      <svg viewBox="0 0 24 24" aria-hidden="true" class="icon-sun"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg>
+      <svg viewBox="0 0 24 24" aria-hidden="true" class="icon-moon"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>
+    </button>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <h1>Learn guitar from zero.</h1>
+      <p class="lead">Short lessons, interactive chord diagrams you can hear, and a metronome to keep you honest. Work through the path at your own pace.</p>
+
+      <div class="card stats" aria-live="polite">
+        <div class="stat">
+          <span class="stat-num"><span id="done-count">0</span>/<span id="lesson-total">0</span></span>
+          <span class="stat-label">lessons done</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num"><span id="streak">0</span><span class="flame" aria-hidden="true">🔥</span></span>
+          <span class="stat-label">day streak</span>
+        </div>
+        <div class="progress" role="progressbar" aria-label="Lesson progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="progressbar">
+          <div class="progress-fill" id="progress-fill"></div>
+        </div>
+        <p class="today" id="today-status">Finish a lesson or practise with the metronome for a minute to start your streak.</p>
+        <p class="storage-warning" id="storage-warning" hidden>Your browser is blocking storage, so progress won't be saved after you close this page.</p>
+      </div>
+    </section>
+
+    <section id="lessons" class="section">
+      <h2>Beginner path</h2>
+      <ol class="lesson-list" id="lesson-list"></ol>
+    </section>
+
+    <section id="chords" class="section" data-scope>
+      <h2>Chord explorer</h2>
+      <p class="muted">Pick a chord to see where your fingers go and watch them move from the last one. Tap the diagram to hear it.</p>
+      <div class="card explorer">
+        <div class="chip-row" id="chord-picker"></div>
+        <div class="board-host" data-board="Em"></div>
+        <ul class="legend">
+          <li><span class="legend-dot">1</span>finger number (1 index · 2 middle · 3 ring · 4 pinky)</li>
+          <li><span class="legend-open"></span>play string open</li>
+          <li><span class="legend-muted">×</span>don't play this string</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="metronome" class="section">
+      <h2>Metronome</h2>
+      <div class="card metro">
+        <div class="beats" id="beats" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+        <div class="bpm-readout"><output id="bpm-value" for="bpm-range">80</output> <span>BPM</span></div>
+        <div class="bpm-controls">
+          <button class="icon-btn round" id="bpm-down" type="button" aria-label="Slower">−</button>
+          <input type="range" id="bpm-range" min="40" max="220" step="1" value="80" aria-label="Tempo in beats per minute">
+          <button class="icon-btn round" id="bpm-up" type="button" aria-label="Faster">+</button>
+        </div>
+        <div class="metro-actions">
+          <button class="btn primary" type="button" data-action="metronome">Start metronome</button>
+          <button class="btn" type="button" id="tap">Tap tempo</button>
+        </div>
+        <p class="muted small">Beat 1 of each bar is accented. Start slow (60–70 BPM) and only speed up once it feels easy.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>No accounts and no tracking. Your progress stays in this browser only.</p>
+    <p>Only chords and original exercises. <button class="link-btn" type="button" id="reset">Reset progress</button></p>
+  </footer>
+</body>
+</html>
