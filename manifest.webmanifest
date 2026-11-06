@@ -1,0 +1,14 @@
+{
+  "name": "Guitar Lab",
+  "short_name": "Guitar Lab",
+  "description": "Daily guitar practice: a 90-day path, chord change trainer, tuner and metronome.",
+  "start_url": "./#/today",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#111214",
+  "theme_color": "#d9531e",
+  "icons": [
+    { "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml" },
+    { "src": "apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }
+  ]
+}
